@@ -1,0 +1,16 @@
+{
+  "name": "Victova Realty",
+  "short_name": "Victova",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#008CFF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/RichFlow Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
