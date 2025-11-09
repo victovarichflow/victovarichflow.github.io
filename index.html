@@ -1,255 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Victova RichWong AI — RichWong</title>
-<link rel="icon" href="" />
-<style>
-  :root{
-    --brand:#008CFF;
-    --bg:#ffffff;
-    --muted:#666;
-    --card:#f8f9fb;
-    --radius:12px;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-  html,body{height:100%;margin:0;background:var(--bg);color:#111}
-  .container{max-width:820px;margin:0 auto;padding:18px;}
-  /* Header / Hero */
-  .hero{
-    display:flex;
-    gap:16px;
-    align-items:center;
-    padding:18px;
-    border-radius:16px;
-    background: linear-gradient(90deg, var(--brand) 10%, #0b84e8 80%);
-    color:white;
-  }
-  .avatar{width:96px;height:96px;border-radius:12px;flex:0 0 96px;object-fit:cover;border:3px solid rgba(255,255,255,0.12)}
-  .hero-text{flex:1}
-  h1{margin:0;font-size:20px; font-weight:700}
-  p.lead{margin:8px 0 0;opacity:0.95}
-  .hero-buttons{margin-top:12px;display:flex;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:none;font-weight:600;background:white;color:var(--brand);text-decoration:none}
-  .btn-email{background:rgba(255,255,255,0.12);color:white;border:1px solid rgba(255,255,255,0.14)}
-  /* Action buttons */
-  .actions{display:flex;gap:12px;margin:18px 0}
-  .action-card{flex:1;padding:14px;background:var(--card);border-radius:12px;text-align:center;cursor:pointer;user-select:none}
-  .action-title{font-weight:700;margin-bottom:6px}
-  .action-sub{color:var(--muted);font-size:13px}
-  /* Property cards */
-  .properties{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-  .prop{background:white;border-radius:10px;overflow:hidden;border:1px solid #eee}
-  .prop img{width:100%;height:120px;object-fit:cover;display:block}
-  .prop .info{padding:8px}
-  .price{color:var(--brand);font-weight:700;margin-top:6px}
-  /* Profile / contact */
-  .profile{display:flex;gap:12px;align-items:center;padding:14px;background:#fff;border-radius:10px;margin-top:18px;border:1px solid #f0f0f0}
-  .profile .small-avatar{width:64px;height:64px;border-radius:10px;object-fit:cover}
-  .profile .meta{flex:1}
-  .meta h3{margin:0;font-size:18px}
-  .meta p{margin:6px 0;color:var(--muted)}
-  .contact-row{display:flex;gap:12px;align-items:center;margin-top:8px}
-  .contact-row a{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:999px;border:1px solid #eee;text-decoration:none;color:#111}
-  /* form modal */
-  .modal{position:fixed;left:0;right:0;top:0;bottom:0;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,0.35);padding:12px;z-index:60}
-  .modal.open{display:flex}
-  .form-card{width:100%;max-width:820px;background:white;border-radius:12px;padding:14px;}
-  .form-row{display:flex;flex-direction:column;margin-bottom:10px}
-  label{font-size:13px;margin-bottom:6px;color:var(--muted)}
-  input[type="text"], input[type="email"], textarea, select{
-    padding:10px;border-radius:8px;border:1px solid #e6e6e6;font-size:15px;
-  }
-  textarea{min-height:84px;resize:vertical}
-  .submit-btn{background:var(--brand);color:white;padding:12px;border-radius:10px;border:none;font-weight:700;width:100%}
-  .close-small{background:#eee;padding:8px;border-radius:8px;border:none}
-  footer{font-size:13px;color:var(--muted);margin:18px 0 36px;text-align:center}
-  /* responsive */
-  @media (max-width:720px){
-    .hero{flex-direction:column;align-items:flex-start}
-    .properties{grid-template-columns:1fr;gap:12px}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rich Wong @ Victova Realty</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- PWA manifest (optional if you added manifest.json earlier) -->
+  <link rel="manifest" href="/manifest.json" />
 </head>
 <body>
-<div class="container">
-
-  <!-- Header / Hero -->
-  <div class="hero">
-    <img src="avatar.jpg" alt="avatar" class="avatar" />
-    <div class="hero-text">
-      <h1>Victova RichWong AI — RichWong</h1>
-      <p class="lead">Helping you buy, sell and invest smartly in Johor Bahru.</p>
-      <div class="hero-buttons">
-        <a class="btn" id="wa-hero" href="#" onclick="openWhatsAppQuick()">WhatsApp</a>
-        <a class="btn btn-email" href="mailto:richwong229@gmail.com">Email</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="images/RichFlow Logo.png" alt="RichFlow Logo" class="logo" />
+        <div class="brand-text">
+          <div class="brand-title">Rich Wong @ Victova Realty</div>
+          <div class="brand-sub">Your Trusted Property Partner in Johor Bahru</div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Action buttons -->
-  <div class="actions">
-    <div class="action-card" onclick="openForm('buy')">
-      <div class="action-title">🏡 Buy Property</div>
-      <div class="action-sub">I want to buy a property</div>
-    </div>
-    <div class="action-card" onclick="openForm('sell')">
-      <div class="action-title">🧾 Sell Property</div>
-      <div class="action-sub">I want to sell my property</div>
-    </div>
-    <div class="action-card" onclick="openForm('join')">
-      <div class="action-title">🤝 Join My Team</div>
-      <div class="action-sub">I want to join as a negotiator</div>
-    </div>
-  </div>
+      <nav class="main-nav" id="main-nav">
+        <a href="#home">Home</a>
+        <a href="#showcase">Property Showcase</a>
+        <a href="#buy">Buy</a>
+        <a href="#sell">Sell</a>
+        <a href="#rent">For Rent</a>
+        <a href="#tenant">Tenant Profile</a>
+        <a href="#join">Join Us</a>
+        <a href="#contact" class="btn-contact">Contact</a>
+      </nav>
 
-  <!-- Property showcase -->
-  <h2 style="margin:6px 0 8px">Property Showcase</h2>
-  <div class="properties">
-    <div class="prop">
-      <img src="property1.jpg" alt="Tanjung Puteri">
-      <div class="info">
-        <div style="font-weight:700">Tanjung Puteri Condominium</div>
-        <div class="price">RM690K</div>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <img src="images/Rich Pic.jpg" alt="Rich Wong" class="hero-avatar" />
+        <div class="hero-content">
+          <h1>Rich Wong</h1>
+          <p class="muted">Senior Negotiator • Victova Realty</p>
+          <p class="lead">Helping you buy, sell and invest smartly in Johor Bahru.</p>
+          <div class="hero-ctas">
+            <a class="btn-primary" href="https://wa.me/60177271608" target="_blank" rel="noopener">📞 Contact Me on WhatsApp</a>
+            <a class="btn-secondary" href="mailto:richwong229@gmail.com">✉️ Email</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="prop">
-      <img src="property2.jpg" alt="Permas Jaya">
-      <div class="info">
-        <div style="font-weight:700">Permas Jaya Double Storey</div>
-        <div class="price">RM588K</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Profile -->
-  <div class="profile">
-    <img src="avatar.jpg" alt="small" class="small-avatar">
-    <div class="meta">
-      <h3>RichWong</h3>
-      <p>Property Agent — Helping you buy, sell and invest smartly in Johor Bahru.</p>
-      <div class="contact-row">
-        <a href="mailto:richwong229@gmail.com">✉️ richwong229@gmail.com</a>
-        <a href="tel:+60177271608">📞 +6017-7271608</a>
-      </div>
-    </div>
-  </div>
+    <!-- PROPERTY SHOWCASE -->
+    <section id="showcase" class="section">
+      <div class="container">
+        <h2>Property Showcase</h2>
+        <p class="section-desc">Featured listings — click a card to contact or view details.</p>
 
-  <footer>
-    Victova Realty Sdn Bhd (E(3)1847) • REN No: Rich Wong | REN73288
+        <div id="propertiesGrid" class="grid"></div>
+
+        <div class="howto">
+          <strong>How to add / edit listings:</strong>
+          <ol>
+            <li>Open <code>script.js</code>, edit the <code>properties</code> array.</li>
+            <li>Save & Commit to GitHub — site updates automatically.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS (embedded) -->
+    <section id="forms" class="section">
+      <div class="container">
+        <div class="form-grid">
+          <div id="buy" class="form-card">
+            <h3>Buy Property</h3>
+            <iframe src="https://forms.gle/Gr9PUmTKTnsoQWc89" frameborder="0" style="width:100%;height:700px"></iframe>
+          </div>
+
+          <div id="sell" class="form-card">
+            <h3>Sell Property</h3>
+            <iframe src="https://forms.gle/fPPfNpW1B4hCyDEp6" frameborder="0" style="width:100%;height:700px"></iframe>
+          </div>
+
+          <div id="rent" class="form-card">
+            <h3>Property For Rent</h3>
+            <iframe src="https://forms.gle/NfMWjxcoQYgAmYLz8" frameborder="0" style="width:100%;height:700px"></iframe>
+          </div>
+
+          <div id="tenant" class="form-card">
+            <h3>Tenant Profile</h3>
+            <iframe src="https://forms.gle/gWiJXf7QxFPfP9Ce6" frameborder="0" style="width:100%;height:700px"></iframe>
+          </div>
+
+          <div id="join" class="form-card">
+            <h3>Join Us</h3>
+            <iframe src="https://forms.gle/XkWrQNFXYQF6pMWu9" frameborder="0" style="width:100%;height:700px"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-inner">
+        <div class="contact-left">
+          <h3>Contact</h3>
+          <p>📞 WhatsApp: <a href="https://wa.me/60177271608" target="_blank">+6017-7271608</a></p>
+          <p>✉️ Email: <a href="mailto:richwong229@gmail.com">richwong229@gmail.com</a></p>
+          <p>🏢 Victova Realty Sdn Bhd (E(3)1847)</p>
+        </div>
+        <div class="contact-right">
+          <p class="lead">Want to list your property or need help selling fast? <br>Send your details using the Sell form or contact me on WhatsApp.</p>
+          <a class="btn-primary" href="https://wa.me/60177271608" target="_blank">📞 Contact Me on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Victova Rich. All Rights Reserved</p>
+    </div>
   </footer>
 
-</div>
-
-<!-- Modal: form -->
-<div id="modal" class="modal" onclick="if(event.target===this) closeForm()">
-  <div class="form-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <strong id="form-title">Form</strong>
-      <button class="close-small" onclick="closeForm()">Close</button>
-    </div>
-    <form id="actionForm" onsubmit="handleSubmit(event)">
-      <input type="hidden" id="form-type" name="type" value="buy" />
-      <div class="form-row">
-        <label>Full Name</label>
-        <input id="fullname" type="text" placeholder="Your full name" required />
-      </div>
-      <div class="form-row">
-        <label>WhatsApp Number (with country code)</label>
-        <input id="phone" type="text" placeholder="+6017-7271608" required />
-      </div>
-      <div id="field-area" class="form-row" style="display:none">
-        <label>Preferred Area / Location</label>
-        <input id="area" type="text" placeholder="e.g., Johor Bahru, Permas Jaya" />
-      </div>
-      <div id="field-budget" class="form-row" style="display:none">
-        <label>Budget (RM)</label>
-        <input id="budget" type="text" placeholder="e.g., 500000" />
-      </div>
-      <div id="field-prop" class="form-row" style="display:none">
-        <label>Property Location (if selling)</label>
-        <input id="prop-location" type="text" placeholder="Address or area" />
-      </div>
-      <div class="form-row">
-        <label>Message</label>
-        <textarea id="message" placeholder="Tell me more..."></textarea>
-      </div>
-      <div class="form-row">
-        <button class="submit-btn" type="submit">Send to WhatsApp</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script>
-  // === CONFIG: 替换这里为你的 WhatsApp 电话（纯数字，不带 + 或短横） ===
-  const OWNER_WA_NUMBER = "60177271608"; // 格式: countrycode+number, e.g. 6017...
-  // ===========================================================
-
-  function openWhatsAppQuick(){
-    const text = encodeURIComponent("Hi RichWong, I want to know more about your listings. My name: ");
-    window.location.href = `https://wa.me/${OWNER_WA_NUMBER}?text=${text}`;
-  }
-
-  // open modal with type
-  function openForm(type){
-    document.getElementById('modal').classList.add('open');
-    document.getElementById('form-type').value = type;
-    document.getElementById('form-title').textContent = (type === 'buy'? 'Buy Property' : type==='sell'? 'Sell Property' : 'Join My Team');
-    // show/hide contextual fields
-    document.getElementById('field-area').style.display = (type==='buy') ? 'block' : 'none';
-    document.getElementById('field-budget').style.display = (type==='buy') ? 'block' : 'none';
-    document.getElementById('field-prop').style.display = (type==='sell') ? 'block' : 'none';
-  }
-  function closeForm(){
-    document.getElementById('modal').classList.remove('open');
-    document.getElementById('actionForm').reset();
-  }
-
-  function sanitizePhone(input){
-    // remove spaces and non-digit except leading +
-    return input.replace(/[^0-9]/g,'');
-  }
-
-  function handleSubmit(e){
-    e.preventDefault();
-    const type = document.getElementById('form-type').value;
-    const name = document.getElementById('fullname').value.trim();
-    let phone = sanitizePhone(document.getElementById('phone').value.trim());
-    const area = document.getElementById('area').value.trim();
-    const budget = document.getElementById('budget').value.trim();
-    const propLoc = document.getElementById('prop-location').value.trim();
-    const msg = document.getElementById('message').value.trim();
-
-    // If user provided phone without country code and looks like 10/11 digit Malaysian number starting with 01, add 60
-    if(phone.length>=9 && phone.length <=11 && phone.startsWith('0')){
-      phone = '60' + phone.slice(1);
-    }
-
-    // Build message
-    let lines = [];
-    lines.push(`Inquiry Type: ${type.toUpperCase()}`);
-    lines.push(`Name: ${name}`);
-    lines.push(`Phone: ${phone || 'N/A'}`);
-    if(type==='buy'){
-      if(area) lines.push(`Preferred area: ${area}`);
-      if(budget) lines.push(`Budget: RM${budget}`);
-    }
-    if(type==='sell'){
-      if(propLoc) lines.push(`Property location: ${propLoc}`);
-    }
-    if(msg) lines.push(`Message: ${msg}`);
-
-    const finalText = encodeURIComponent(lines.join('\n'));
-    // open whatsapp to owner number
-    const url = `https://wa.me/${OWNER_WA_NUMBER}?text=${finalText}`;
-    window.location.href = url;
-  }
-
-  // make hero WA open message prefill
-  // optional: set hero WA quick to owner number above
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
-
