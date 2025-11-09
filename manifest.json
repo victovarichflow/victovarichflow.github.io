@@ -8,7 +8,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "images/RichFlow Logo.png",
+      "src": "images/richflowlogo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
