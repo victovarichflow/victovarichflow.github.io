@@ -1,255 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Victova Realty – Johor Bahru Real Estate Specialist</title>
-<style>
-/* 全局 */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background: #ffffff;
-  color: #333;
-  line-height: 1.6;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victova Realty – Johor Bahru Real Estate Specialist</title>
+  <style>
+    /* 全局 */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
 
-/* Header / Navbar */
-header {
-  background: white;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    /* Header / Navbar */
+    header {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: auto;
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+    }
 
-.logo img {
-  height: 50px;
-}
+    .logo img {
+      height: 45px;
+    }
 
-nav a {
-  position: relative;
-  margin: 0 15px;
-  color: #008CFF;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 5px 0;
-  transition: color 0.3s;
-}
+    nav a {
+      position: relative;
+      margin: 0 10px;
+      color: #008CFF;
+      text-decoration: none;
+      font-weight: 600;
+      padding-right: 10px; /* 给竖线留空间 */
+    }
 
-/* 竖线分隔符 */
-nav a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 16px;
-  background: #ccc;
-  transition: background 0.3s, transform 0.3s;
-}
+    /* 竖线分隔符，最后一个除外 */
+    nav a:not(:last-child)::after {
+      content: "|";
+      position: absolute;
+      right: 0;
+      color: #333;
+    }
 
-/* 悬浮效果 */
-nav a:hover {
-  color: #005BBB;
-}
+    nav a:hover {
+      text-decoration: underline;
+      color: #0077DD;
+    }
 
-nav a:hover::after {
-  background: #005BBB; /* 竖线变蓝 */
-  transform: translateY(-50%) scaleY(1.5); /* 竖线微微变长 */
-}
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: #f9f9f9;
+    }
 
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 50px 20px;
-  background: #f9f9f9;
-}
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid #008CFF;
+      object-fit: cover;
+    }
 
-.profile-pic {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 3px solid #008CFF;
-  object-fit: cover;
-}
+    .hero h1 {
+      margin-top: 15px;
+      font-size: 28px;
+    }
 
-.hero h1 {
-  margin-top: 15px;
-  font-size: 28px;
-}
+    .hero h2 {
+      color: #555;
+    }
 
-.hero h2 {
-  color: #555;
-}
+    .btn-primary {
+      display: inline-block;
+      background: #008CFF;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+    }
 
-.btn-primary {
-  display: inline-block;
-  background: #008CFF;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 15px;
-  transition: background 0.3s;
-}
+    .btn-primary:hover {
+      background: #0077DD;
+    }
 
-.btn-primary:hover {
-  background: #005BBB;
-}
+    /* Sections */
+    section {
+      width: 90%;
+      margin: 50px auto;
+    }
 
-/* Sections */
-section {
-  width: 90%;
-  margin: 50px auto;
-}
+    section h2 {
+      text-align: center;
+      color: #008CFF;
+      margin-bottom: 20px;
+    }
 
-section h2 {
-  text-align: center;
-  color: #008CFF;
-  margin-bottom: 20px;
-}
+    /* Property Cards */
+    .properties {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
 
-/* Property Cards */
-.properties {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
+    .property-card {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
 
-.property-card {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
+    .property-card h3 {
+      color: #008CFF;
+    }
 
-.property-card h3 {
-  color: #008CFF;
-}
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
 
-/* Contact */
-.contact {
-  text-align: center;
-}
+    /* Footer */
+    footer {
+      background: #008CFF;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
 
-/* Footer */
-footer {
-  background: #008CFF;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 30px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  nav a {
-    margin: 5px 10px;
-  }
-  .property-card {
-    padding: 15px;
-  }
-}
-</style>
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav a {
+        margin: 5px 10px;
+      }
+      .property-card {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<!-- Header / Navbar -->
-<header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="images/richflowlogo.png" alt="RichFlow Logo">
+  <!-- Header / Navbar -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="images/RichFlow Logo.png" alt="RichFlow Logo">
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#buy">Buy</a>
+        <a href="#sell">Sell</a>
+        <a href="#rent">Rent</a>
+        <a href="#join">Join</a>
+        <a href="#about">About Us</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#buy">Buy</a>
-      <a href="#sell">Sell</a>
-      <a href="#rent">Rent</a>
-      <a href="#join">Join</a>
-      <a href="#about">About Us</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-  <img src="images/richpic.png" alt="Rich Wong" class="profile-pic">
-  <h1>Victova Realty – Johor Bahru Real Estate Specialist</h1>
-  <h2>Your Trusted Property Partner in Johor Bahru</h2>
-  <a href="https://wa.me/60177271608" class="btn-primary">📞 Contact Me on WhatsApp</a>
-</section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <img src="images/Rich Pic.jpg" alt="Rich Wong" class="profile-pic">
+    <h1>Victova Realty – Johor Bahru Real Estate Specialist</h1>
+    <h2>Your Trusted Property Partner in Johor Bahru</h2>
+    <a href="https://wa.me/60177271608" class="btn-primary">📞 Contact Me on WhatsApp</a>
+  </section>
 
-<!-- Buy Section -->
-<section id="buy">
-  <h2>Buy | 买房</h2>
-  <p>Looking to buy property in Johor Bahru? We help you find the best deals.</p>
-</section>
+  <!-- Buy Section -->
+  <section id="buy">
+    <h2>Buy | 买房</h2>
+    <p>Looking to buy property in Johor Bahru? We help you find the best deals.</p>
+  </section>
 
-<!-- Sell Section -->
-<section id="sell">
-  <h2>Sell | 卖房</h2>
-  <p>Want to sell your property fast and hassle-free? We provide fair offers and legal support.</p>
-</section>
+  <!-- Sell Section -->
+  <section id="sell">
+    <h2>Sell | 卖房</h2>
+    <p>Want to sell your property fast and hassle-free? We provide fair offers and legal support.</p>
+  </section>
 
-<!-- Rent Section -->
-<section id="rent">
-  <h2>Rent | 租房</h2>
-  <p>Looking for rental opportunities? We connect tenants and landlords efficiently.</p>
-</section>
+  <!-- Rent Section -->
+  <section id="rent">
+    <h2>Rent | 租房</h2>
+    <p>Looking for rental opportunities? We connect tenants and landlords efficiently.</p>
+  </section>
 
-<!-- Join Section -->
-<section id="join">
-  <h2>Join | 加入我们</h2>
-  <p>Join our team or partner with us to explore exciting real estate opportunities.</p>
-</section>
+  <!-- Join Section -->
+  <section id="join">
+    <h2>Join | 加入我们</h2>
+    <p>Join our team or partner with us to explore exciting real estate opportunities.</p>
+  </section>
 
-<!-- About Section -->
-<section id="about">
-  <h2>About Me | 关于我</h2>
-  <p>
-    <b>旧屋？破旧？有租客？急套现？</b><br>
-    我们现金收购！快速方便！<br>
-    免费屋况检查与上门评估，公平报价，提供法律文件办理。<br>
-    帮助您在新山地区聪明买卖与投资房产。
-  </p>
-  <p>
-    <b>Old house? Damaged? Tenanted? Need fast cash?</b><br>
-    We buy in cash – fast and convenient!<br>
-    Free property inspection, fair offer, and legal document support.<br>
-    Helping you buy, sell, and invest smartly in Johor Bahru.
-  </p>
-</section>
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me | 关于我</h2>
+    <p>
+      <b>旧屋？破旧？有租客？急套现？</b><br>
+      我们现金收购！快速方便！<br>
+      免费屋况检查与上门评估，公平报价，提供法律文件办理。<br>
+      帮助您在新山地区聪明买卖与投资房产。
+    </p>
+    <p>
+      <b>Old house? Damaged? Tenanted? Need fast cash?</b><br>
+      We buy in cash – fast and convenient!<br>
+      Free property inspection, fair offer, and legal document support.<br>
+      Helping you buy, sell, and invest smartly in Johor Bahru.
+    </p>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-  <h2>Contact | 联系我</h2>
-  <a href="https://wa.me/60177271608" class="btn-primary">📞 Contact Me on WhatsApp</a>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact | 联系我</h2>
+    <a href="https://wa.me/60177271608" class="btn-primary">📞 Contact Me on WhatsApp</a>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 Victova Rich. All Rights Reserved</p>
-</footer>
-
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Victova Rich. All Rights Reserved</p>
+  </footer>
 </body>
 </html>
